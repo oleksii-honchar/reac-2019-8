@@ -1,0 +1,83 @@
+Arguments: 
+  /Users/user/.nvm/versions/node/v12.9.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js web-app:install
+
+PATH: 
+  /Users/user/.nvm/versions/node/v12.9.0/bin:/Users/user/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  12.9.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/user/www/oleksii-honchar/react-2019-8/package.json: Unexpected token } in JSON at position 1897
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "df2-web-app",
+    "version": "0.0.0",
+    "description": "Delivery Flow 2 skeleton web-app",
+    "main": "index.js",
+    "scripts": {
+      "start": "run-p app-svc:launch:dev app:watch",
+      "docker:build": "bash ./devops/scripts/build.sh",
+      "docker:up": "bash ./devops/scripts/run.sh",
+      "docker:up:loc": "bash ./devops/scripts/run.dev.sh",
+      "docker:up:loc:isolated": "bash ./devops/scripts/run.dev.isolated.sh",
+      "web-app:launch:dev": "run-p app-svc:launch:dev app:watch",
+      "web-app:launch:dev:isolated": "run-p app-svc:launch:dev:isolated app:watch",
+      "web-app:install": "npm install && run-p app:install app-svc:install",
+      "web-app:lint": "run-p app:lint app-svc:lint",
+      "app-svc:launch:dev": "npm --prefix src/app-svc run launch:dev",
+      "app-svc:launch:dev:isolated": "npm --prefix src/app-svc run launch:dev:isolated",
+      "app-svc:launch:prod:local": "npm --prefix src/app-svc run launch:prod:local",
+      "app-svc:launch": "npm --prefix src/app-svc run launch",
+      "app-svc:build": "npm --prefix src/app-svc run build",
+      "app-svc:build:dev": "npm --prefix src/app-svc run build:dev",
+      "app-svc:test": "npm --prefix src/app-svc test",
+      "app-svc:lint": "npm --prefix src/app-svc run lint",
+      "app-svc:install": "bash devops/scripts/install-app-svc.sh",
+      "app:build": "npm --prefix src/app run build",
+      "app:build:dev": "npm --prefix src/app run build:dev",
+      "app:build:dev:static": "npm --prefix src/app run build:dev:static",
+      "app:build:dev:ssr": "npm --prefix src/app run build:dev:ssr",
+      "app:watch": "npm --prefix src/app run watch",
+      "app:lint": "npm --prefix src/app run lint",
+      "app:install": "bash devops/scripts/install-app.sh",
+      "app:test": "npm --prefix src/app run test"
+    },
+    "pre-commit": [
+      "web-app:lint"
+    ],
+    "author": "SOL JS Team",
+    "license": "MIT",
+    "dependencies": {
+      "css-loader": "1.0.0",
+  
+    },
+    "engines": {
+      "node": "10.4.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://gitlab.ciklum.net/df2-components/df2-skeleton.git"
+    },
+    "devDependencies": {
+      "pre-commit": "1.2.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
