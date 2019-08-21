@@ -1,0 +1,104 @@
+before_script:
+- whoami
+- ./devops/scripts/check-free-space.sh
+
+stages:
+- build-only
+- bump-version
+- build-and-push
+- deploy-qa
+- deploy-stage
+- deploy-prod
+
+cache:
+  key: master
+  paths:
+  - deploy/version
+
+.pipeline-dependency: &pipeline-dependency
+  artifacts:
+    paths:
+    - ./devops/pipeline/
+
+build-only:
+  stage: build-only
+  only:
+    refs:
+    - trigger
+    variables:
+    - $BUILD_ONLY == 'true'
+  except:
+  - master
+  script:
+  - ./build.sh
+  - ./devops/scripts/pipeline-dependency.sh success
+
+bump-version:
+  stage: bump-version
+  only:
+    refs:
+    - trigger
+    - master
+    variables:
+    - $BUILD_AND_PUSH == 'true'
+  script:
+  - ./devops/scripts/login-to-git.sh
+  - ./devops/scripts/bump-version.sh $SEMVER_ACTION
+  - ./devops/scripts/post-jira-comment.sh
+
+build-and-push:
+  <<: *pipeline-dependency
+  stage: build-and-push
+  when: always
+  only:
+  - tags
+  script:
+  - ./build.sh
+  - ./devops/docker/scripts/push.sh
+  - ./devops/scripts/pipeline-dependency.sh success
+  - ./devops/docker/scripts/push-latest.sh
+
+deploy-qa:
+  <<: *pipeline-dependency
+  before_script:
+    - ./devops/scripts/pipeline-dependency.sh require build-and-push
+  when: manual
+  stage: deploy-qa
+  environment:
+    name: qa
+    url: http://qa.ciklum-website.pp.ciklum.com
+  only:
+  - tags
+  script:
+  - ./devops/scripts/deploy.qa.sh
+  - ./devops/scripts/pipeline-dependency.sh success
+
+deploy-stage:
+  <<: *pipeline-dependency
+  before_script:
+    - ./devops/scripts/pipeline-dependency.sh require deploy-qa
+  stage: deploy-stage
+  environment:
+    name: stage
+    url: http://stage.ciklum.com
+  only:
+  - tags
+  when: manual
+  script:
+  - ./devops/scripts/deploy.stage.sh
+  - ./devops/scripts/pipeline-dependency.sh success
+
+deploy-prod:
+  <<: *pipeline-dependency
+  before_script:
+    - ./devops/scripts/pipeline-dependency.sh require deploy-stage
+  stage: deploy-prod
+  environment:
+    name: production
+    url: http://prod.ciklum.com
+  only:
+  - tags
+  when: manual
+  script:
+  - ./devops/scripts/deploy.prod.sh
+  - ./devops/scripts/pipeline-dependency.sh success

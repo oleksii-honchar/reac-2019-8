@@ -1,0 +1,38 @@
+version: "3.7"
+services:
+
+  df2-skeleton-nginx:
+    container_name: df2-skeleton-nginx
+    image: registry.ciklum.net/ciklum/st/nginx-more:1.0.1
+    ports:
+      - "80:80"
+    volumes:
+      - ../../local/nginx/config:/etc/nginx:ro
+    links:
+      - "cwd-service:service"
+      - "cwd-web-app:web-app"
+    networks:
+      - default
+
+  df2-skeleton-web-app:
+    container_name: df2-skeleton-web-app
+    image: registry.ciklum.net/ciklum/df2/df2-skeleton-wa:latest
+    env_file:
+      - ../../local/config/production.local.env
+    ports:
+      - "8000:80"
+#    links:
+#    - "df2-skeleton-service:service"
+    networks:
+      - default
+
+#  df2-skeleton-service:
+#    container_name: df2-skeleton-service
+#    image: registry.ciklum.net/ciklum/df2/df2-skeleton-svc:latest
+#    env_file:
+#      - ../local/config/development.env
+#    networks:
+#      - default
+
+#volumes:
+#  df2-skeleton_db_data:

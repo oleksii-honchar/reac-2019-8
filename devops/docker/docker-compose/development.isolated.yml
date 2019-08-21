@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+
+  df2-skeleton-web-app:
+    container_name: df2-skeleton-web-app
+    image: registry.ciklum.net/ciklum/df2/df2-skeleton-wa:latest
+    env_file:
+      - ../../local/config/development.isolated.env
+    volumes:
+      - ../../../:/usr/src/web-app
+      - ./services/nginx/config:/etc/nginx
+    ports:
+      - "80:80"
+      - "9229:9229"
+    networks:
+      - default
