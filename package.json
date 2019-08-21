@@ -11,7 +11,7 @@
     "docker:up:loc:isolated": "bash ./devops/scripts/run.dev.isolated.sh",
     "clean:dist": "rm -rf dist/static",
     "prebuild": "yarn clean:dist",
-    "build": "run-p build:static build:ssr",
+    "build": "yarn build:static",
     "build:static": "bash scripts/build.static.sh",
     "build:ssr": "bash scripts/build.ssr.sh",
     "prebuild:dev": "yarn clean:dist",
@@ -27,17 +27,19 @@
     "test:coverage": "cross-env NODE_ENV=test jest --coverage"
   },
   "pre-commit": [
+    "lint:fix",
     "lint"
   ],
   "author": "IAmAMaze",
   "license": "MIT",
   "dependencies": {
-    "env-cmd": "9.0.3",
     "@ciklum/logan": "0.4.10",
     "@ciklum/waas": "1.9.2",
     "@ciklum/xmess": "1.0.4",
     "classnames": "2.2.6",
+    "core-js": "3",
     "debounce": "1.2.0",
+    "env-cmd": "9.0.3",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-saver": "2.0.2",
@@ -70,20 +72,21 @@
     "babel-jest": "24.9.0",
     "babel-loader": "8",
     "babel-plugin-module-resolver": "3",
+    "compression-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "5.0.4",
     "cross-env": "5.2.0",
     "css-loader": "3.2.0",
     "cssnano": "4.1.10",
     "eslint": "6.2.1",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-import-resolver-babel-module": "5.1.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "22.15.1",
     "eslint-plugin-json": "1.4.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "extract-text-webpack-plugin": "3.0.2",
     "faker": "4.1.0",
     "file-loader": "4.2.0",
@@ -92,24 +95,24 @@
     "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.7.0",
+    "pre-commit": "1.2.2",
+    "prettier": "1.18.2",
     "react-test-renderer": "16.9.0",
     "rimraf": "3.0.0",
     "style-loader": "1.0.0",
-    "sugarss": "2.0.0",
     "terser-webpack-plugin": "1.4.1",
     "to-string-loader": "1.1.5",
     "webpack": "4.39.2",
     "webpack-bundle-analyzer": "3.4.1",
     "webpack-cli": "3.3.7",
     "webpack-dev-server": "3.8.0",
-    "webpack-merge": "4.2.1",
-    "pre-commit": "1.2.2"
+    "webpack-merge": "4.2.1"
   },
   "engines": {
     "node": "12"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.ciklum.net/df2-components/df2-skeleton.git"
+    "url": "https://github.com/oleksii-honchar/react-2019-8"
   }
 }

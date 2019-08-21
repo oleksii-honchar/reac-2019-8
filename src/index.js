@@ -1,12 +1,10 @@
-// eslint-disable-next-line
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { LoggerService } from '@ciklum/logan';
 // import { ApiService, AxiosHttpAdapter } from '@ciklum/waas'
 
 // import { historySvc } from './services'
 
-// eslint-disable-next-line import/named
 import { Root } from './modules/Root';
 
 window.pkg = JSON.parse(atob(PKG));
@@ -31,4 +29,6 @@ function startApp () {
   ReactDOM.render(<Root title="Hello world!"/>, document.querySelector('#app-root'));
 }
 
-if (window.config.startApp) startApp();
+// if (window.config.startApp) startApp();
+
+startApp();

@@ -30,7 +30,7 @@ const baseCfg = {
     ],
   },
   output: {
-    path: path.join(__dirname, '../../dist/static'),
+    path: path.join(__dirname, 'dist/static'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     publicPath: './static/',

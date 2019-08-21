@@ -1,18 +1,21 @@
 {
   "presets": [
-    "es2015",
-    "react",
+    "@babel/react",
     [
-      "env",
+      "@babel/env",
       {
-        "modules": false,
         "targets": {
           "browsers": [
-            "last 2 versions",
-            "safari >= 7"
+            "last 3 versions",
+            "> 0.25%",
+            "not dead",
+            "not ie <= 11",
+            "not op_mini all"
           ]
         },
-        "useBuiltIns": true
+        "useBuiltIns": "usage",
+        "corejs": "3.0.0",
+        "shippedProposals": true
       }
     ]
   ],
@@ -25,17 +28,19 @@
         ]
       }
     ],
-    "babel-plugin-styled-components",
     [
-      "styled-components",
+      "@babel/plugin-proposal-decorators",
       {
-        "minify": true
+        "legacy": true
       }
     ],
-    "transform-decorators-legacy",
-    "transform-decorators",
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-async-to-generator"
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

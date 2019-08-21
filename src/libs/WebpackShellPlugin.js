@@ -20,14 +20,14 @@ WebpackShellPlugin.prototype.apply = function apply (compiler) {
   compiler.plugin('compilation', () => {
     if (options.onBuildStart.length) {
       console.log('Executing pre-build scripts');
-      options.onBuildStart.forEach(script => exec(script, puts));
+      options.onBuildStart.forEach((script) => exec(script, puts));
     }
   });
 
   compiler.plugin('emit', (compilation, callback) => {
     if (options.onBuildEnd.length) {
       console.log('Executing post-build scripts');
-      options.onBuildEnd.forEach(script => exec(script, puts));
+      options.onBuildEnd.forEach((script) => exec(script, puts));
     }
     callback();
   });

@@ -1,4 +1,4 @@
-import pkg from '../../../package.json';
+import pkg from '../package.json';
 
 global.window = {
   name: pkg.name,
@@ -13,7 +13,7 @@ global.window = {
     window: {},
   },
   pkg,
-  atob: data => Buffer.from(data, 'base64').toString(),
+  atob: (data) => Buffer.from(data, 'base64').toString(),
   addEventListener: () => null,
 };
 

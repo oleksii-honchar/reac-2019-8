@@ -1,3 +1,4 @@
+
 module.exports = {
   'extends': [
     'airbnb-base',
@@ -42,6 +43,7 @@ module.exports = {
     },
     'react': {
       'pragma': 'h',
+      'version': 'detect'
     },
   },
   'env': {

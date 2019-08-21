@@ -19,9 +19,9 @@ export function execWaasReqSeries (waasReqs) {
     logger.info('start execution');
     return waasReqs.forEach((getDataFn) => {
       getDataFn()
-        .on('success', res => success.push(res))
-        .on('error', res => error.push(res))
-        .on('failure', res => failure.push(res))
+        .on('success', (res) => success.push(res))
+        .on('error', (res) => error.push(res))
+        .on('failure', (res) => failure.push(res))
         .on('after', () => {
           const resPayloadLength = success.length + error.length + failure.length;
 

@@ -33,14 +33,6 @@ checkVar NPM_REGISTRY_TOKEN
 
 checkVar LOG_LEVEL
 
-checkVar APP_SVC_PORT
-checkVar APP_SVC_MOUNT_POINT
-checkVar APP_SVC_MODE
-checkVar SERVICE_HOST
 checkVar NODE_ENV
-checkVar WATCH_MODE
-checkVar SSR
-checkVar CACHE_SSR
-checkVar CACHE_API
 
 printf "${LBLUE}Check completed${NC}\n";
