@@ -1,1 +1,0 @@
-export { historySvc } from './history';
