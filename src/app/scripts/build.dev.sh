@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-envFile="$PWD/devops/local/config/development.env"
-env-cmd -f $envFile "$PWD/devops/local/scripts/check-env-vars.sh"
+envFile="$PWD/../../devops/local/config/development.env"
+env-cmd -f $envFile "$PWD/../../devops/local/scripts/check-env-vars.sh"
 
 source $envFile
 
