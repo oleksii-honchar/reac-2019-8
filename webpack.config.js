@@ -22,6 +22,13 @@ function getBase64Package () {
 
 const baseCfg = {
   cache: true,
+  devServer: {
+    http2: true,
+    port: process.env.SERVE_PORT,
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/assets/',
+    writeToDisk: true
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.html'],
     modules: [
@@ -30,10 +37,10 @@ const baseCfg = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist/static'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
-    publicPath: './static/',
+    publicPath: './assets/',
   },
   module: {
     rules: [
@@ -130,7 +137,7 @@ const baseCfg = {
       debug: process.env.NODE_ENV !== 'production',
     }),
     new CopyWebpackPlugin([{
-      from: './src/assets', to: '../../dist/static/assets',
+      from: './src/assets', to: '.'
     }]),
     // new BundleAnalyzerPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin()

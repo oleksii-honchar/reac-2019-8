@@ -32,6 +32,8 @@ checkVar NPM_REGISTRY
 checkVar NPM_REGISTRY_TOKEN
 
 checkVar LOG_LEVEL
+checkVar SSR
+checkVar SERVE_PORT
 
 checkVar NODE_ENV
 
