@@ -28,7 +28,7 @@ function startApp () {
 
   ReactDOM.render(
     <Root title="Hello world!" />,
-    document.querySelector('#app-root')
+    document.querySelector('#app-root'),
   );
 }
 
