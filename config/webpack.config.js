@@ -11,7 +11,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
-const $pkg = require('./package.json');
+const $pkg = require('../package.json');
 
 function getBase64Package () {
   return JSON.stringify(Buffer.from(JSON.stringify({
@@ -50,8 +50,13 @@ const baseCfg = {
         use: 'source-map-loader',
       },
       {
-        test: /\.jsx?$/,
-        use: ['babel-loader'],
+        test: /\.[tj]sx?$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            configFile: path.join(__dirname, './babel.config.js')
+          }
+        },
         exclude: [
           /\.(spec|e2e)\.js$/,
           /node_modules/,
