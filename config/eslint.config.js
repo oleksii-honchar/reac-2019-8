@@ -12,6 +12,12 @@ module.exports = {
         'render',
       ],
     }],
+    'function-paren-newline': [
+      'error',
+      {
+        'minItems': 3
+      }
+    ],
     'no-unused-vars': [
       'error',
       {
@@ -69,7 +75,7 @@ module.exports = {
     'it': true,
     'expect': true,
   },
-  'parser': 'babel-eslint',
+  'parser': '@typescript-eslint/parser',
   'plugins': [
     'babel',
     'react',

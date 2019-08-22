@@ -14,10 +14,11 @@ module.exports = {
           ],
           'node': '12'
         },
-        'useBuiltIns': 'usage',
+        'useBuiltIns': 'entry',
         'corejs': '3.0.0',
         'shippedProposals': true
-      }
+      },
+      '@babel/typescript'
     ]
   ],
   'plugins': [

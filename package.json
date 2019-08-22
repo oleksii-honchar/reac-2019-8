@@ -73,6 +73,7 @@
     "@babel/register": "7.5.5",
     "@babel/runtime": "7.5.5",
     "@types/jest": "^24.0.18",
+    "@typescript-eslint/parser": "^2.0.0",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.9.0",
     "babel-loader": "8",

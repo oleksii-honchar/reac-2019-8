@@ -25,7 +25,7 @@ const baseCfg = {
   devServer: {
     http2: true,
     port: process.env.SERVE_PORT,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, '../dist'),
     publicPath: '/assets/',
     writeToDisk: true
   },
@@ -37,7 +37,7 @@ const baseCfg = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     publicPath: './assets/',
