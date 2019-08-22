@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
 // `NODE_ENV` = development | test | production
@@ -30,7 +30,7 @@ const baseCfg = {
     writeToDisk: true
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.html'],
+    extensions: ['.js', '.jsx', '.html', 'ts', 'tsx'],
     modules: [
       'src',
       'node_modules',
@@ -113,7 +113,19 @@ const baseCfg = {
               importLoaders: 1,
             },
           },
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                ctx: {
+                  'postcss-preset-env': {},
+                  cssnano: {},
+                  nev: process.env.NODE_ENV
+                },
+                path: './config/postcss.config.js'
+              }
+            }
+          }
         ],
       },
     ],

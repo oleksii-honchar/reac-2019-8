@@ -1,6 +1,7 @@
-{
+modulex.exports = {
   "presets": [
     "@babel/react",
+    "@babel/typescript",
     [
       "@babel/env",
       {
@@ -11,7 +12,8 @@
             "not dead",
             "not ie <= 11",
             "not op_mini all"
-          ]
+          ],
+          "node": "12"
         },
         "useBuiltIns": "usage",
         "corejs": "3.0.0",

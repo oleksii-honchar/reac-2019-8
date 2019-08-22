@@ -1,1 +1,1 @@
-export { historySvc } from './history';
+export { historySvc } from './history'
