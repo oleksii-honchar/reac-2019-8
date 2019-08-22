@@ -14,9 +14,7 @@ module.exports = {
     }],
     'function-paren-newline': [
       'error',
-      {
-        'minItems': 3
-      }
+      'consistent'
     ],
     'no-unused-vars': [
       'error',

@@ -25,7 +25,11 @@ export function intToHex (num) {
   @returns: string    => the third color, hex,
    represenatation of the blend between color1 and color2 at the given percentage
 */
-export function blendColors (c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
+export function blendColors (
+  c1 = '#000000',
+  c2 = '#ffffff',
+  percentage = 0.5,
+) {
   let color1 = c1;
   let color2 = c2;
   // 1: validate input, make sure we have provided a valid hex
