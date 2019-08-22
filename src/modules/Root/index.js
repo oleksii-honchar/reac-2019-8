@@ -5,7 +5,7 @@ import { Navbar } from './components/Navbar';
 import styles from './index.css';
 
 export class Root extends Component {
-  render() {
+  render () {
     const { title } = this.props;
 
     return (

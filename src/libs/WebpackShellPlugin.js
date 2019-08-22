@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 const { exec } = require('child_process');
 
-function puts(error, stdout) {
+function puts (error, stdout) {
   console.log(stdout);
 }
 
-function WebpackShellPlugin(options) {
+function WebpackShellPlugin (options) {
   const defaultOptions = {
     onBuildStart: [],
     onBuildEnd: [],
@@ -14,7 +14,7 @@ function WebpackShellPlugin(options) {
   this.options = Object.assign(defaultOptions, options);
 }
 
-WebpackShellPlugin.prototype.apply = function apply(compiler) {
+WebpackShellPlugin.prototype.apply = function apply (compiler) {
   const { options } = this;
 
   compiler.plugin('compilation', () => {

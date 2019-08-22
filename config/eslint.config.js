@@ -1,10 +1,8 @@
 module.exports = {
   'extends': [
-    'airbnb-base',
-    'prettier/react'
+    'airbnb-base'
   ],
   'rules': {
-    'prettier/prettier': 'error',
     'space-before-function-paren': [
       'error',
       'always',
@@ -21,6 +19,17 @@ module.exports = {
       }
     ],
     'import/prefer-default-export': 'off',
+    'max-len': [
+      'error',
+      {
+        'code': 90,
+        'tabWidth': 2,
+        'ignoreComments': true,
+        'ignoreUrls': true,
+        'ignoreStrings': true,
+        'ignoreTemplateLiterals': true
+      }
+    ],
     'react/jsx-no-bind': [2, { 'ignoreRefs': true }],
     'react/jsx-no-duplicate-props': 2,
     'react/self-closing-comp': 2,
@@ -63,7 +72,6 @@ module.exports = {
   'parser': 'babel-eslint',
   'plugins': [
     'babel',
-    'prettier',
     'react',
     'jest',
     'json',

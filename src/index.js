@@ -20,7 +20,7 @@ window.config.isNode = false;
 // const axiosHttpAdapter = new AxiosHttpAdapter()
 // export const rootApiSvc = new ApiService(axiosHttpAdapter, 'api')
 
-function startApp() {
+function startApp () {
   logger.info('Starting app...');
 
   // const render = window.config.ssr ? ReactDOM.hydrate : ReactDOM.render

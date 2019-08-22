@@ -5,7 +5,7 @@
     @param: num         => the number to conver to hex
     @returns: string    => the hex representation of the provided number
 */
-export function intToHex(num) {
+export function intToHex (num) {
   const hex = Math.round(num).toString(16);
   if (hex.length === 1) return `0${hex}`;
   return hex;
@@ -25,7 +25,7 @@ export function intToHex(num) {
   @returns: string    => the third color, hex,
    represenatation of the blend between color1 and color2 at the given percentage
 */
-export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
+export function blendColors (c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
   let color1 = c1;
   let color2 = c2;
   // 1: validate input, make sure we have provided a valid hex
@@ -45,14 +45,12 @@ export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
   // the three character hex is just a representation of the 6 hex where each character is repeated
   // ie: #060 => #006600 (green)
   if (color1.length === 4) {
-    color1 =
-      color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3];
+    color1 = color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3];
   } else {
     color1 = color1.substring(1);
   }
   if (color2.length === 4) {
-    color2 =
-      color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3];
+    color2 = color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3];
   } else {
     color2 = color2.substring(1);
   }
