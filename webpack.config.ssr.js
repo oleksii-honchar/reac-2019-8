@@ -178,7 +178,7 @@ if (process.env.NODE_ENV === 'production') {
   finalCfg = webpackMerge(baseCfg, {
     plugins: [
       new WebpackShellPlugin({
-        onBuildStart: [`echo "Building app [${$pkg.name}] SSR bundle..."`],
+        onBuildStart: [`echo 'Building app [${$pkg.name}] SSR bundle...'`],
         onBuildEnd: [
           'sleep 3s && echo "touching api-gw to restart..." && touch ../api-gw/src/index.js',
         ],

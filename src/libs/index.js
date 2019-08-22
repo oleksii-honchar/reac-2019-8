@@ -1,2 +1,2 @@
-export * from './helpers'
-export * from './lodash'
+export * from './helpers';
+export * from './lodash';

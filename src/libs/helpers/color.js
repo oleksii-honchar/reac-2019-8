@@ -6,9 +6,9 @@
     @returns: string    => the hex representation of the provided number
 */
 export function intToHex(num) {
-  const hex = Math.round(num).toString(16)
-  if (hex.length === 1) return `0${hex}`
-  return hex
+  const hex = Math.round(num).toString(16);
+  if (hex.length === 1) return `0${hex}`;
+  return hex;
 }
 
 /*
@@ -26,19 +26,19 @@ export function intToHex(num) {
    represenatation of the blend between color1 and color2 at the given percentage
 */
 export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
-  let color1 = c1
-  let color2 = c2
+  let color1 = c1;
+  let color2 = c2;
   // 1: validate input, make sure we have provided a valid hex
   if (color1.length !== 4 && color1.length !== 7) {
-    throw new Error('colors must be provided as hexes')
+    throw new Error('colors must be provided as hexes');
   }
 
   if (color2.length !== 4 && color2.length !== 7) {
-    throw new Error('colors must be provided as hexes')
+    throw new Error('colors must be provided as hexes');
   }
 
   if (percentage > 1 || percentage < 0) {
-    throw new Error('percentage must be between 0 and 1')
+    throw new Error('percentage must be between 0 and 1');
   }
 
   // 2: check to see if we need to convert 3 char hex to 6 char hex, else slice off hash
@@ -46,15 +46,15 @@ export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
   // ie: #060 => #006600 (green)
   if (color1.length === 4) {
     color1 =
-      color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3]
+      color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3];
   } else {
-    color1 = color1.substring(1)
+    color1 = color1.substring(1);
   }
   if (color2.length === 4) {
     color2 =
-      color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3]
+      color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3];
   } else {
-    color2 = color2.substring(1)
+    color2 = color2.substring(1);
   }
 
   // 3: we have valid input, convert colors to rgb
@@ -62,19 +62,19 @@ export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
     parseInt(color1[0] + color1[1], 16),
     parseInt(color1[2] + color1[3], 16),
     parseInt(color1[4] + color1[5], 16),
-  ]
+  ];
   color2 = [
     parseInt(color2[0] + color2[1], 16),
     parseInt(color2[2] + color2[3], 16),
     parseInt(color2[4] + color2[5], 16),
-  ]
+  ];
 
   // 4: blend
   let color3 = [
     (1 - percentage) * color1[0] + percentage * color2[0],
     (1 - percentage) * color1[1] + percentage * color2[1],
     (1 - percentage) * color1[2] + percentage * color2[2],
-  ]
+  ];
 
   // 5: convert to hex
   color3 = [
@@ -82,8 +82,8 @@ export function blendColors(c1 = '#000000', c2 = '#ffffff', percentage = 0.5) {
     intToHex(color3[0]),
     intToHex(color3[1]),
     intToHex(color3[2]),
-  ].join('')
+  ].join('');
 
   // return hex
-  return color3
+  return color3;
 }
