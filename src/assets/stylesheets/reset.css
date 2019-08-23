@@ -7,15 +7,12 @@ body {
 }
 
 html {
-  font-size: 10px;
   background: #ffffff;
   color: #111111;
   min-width: 320px;
 }
 
 body {
-  font-size: 1.4rem;
-  font-family: 'Helvetica', sans-serif;
   line-height: 2rem;
   -webkit-overflow-scrolling: touch;
   color: inherit;

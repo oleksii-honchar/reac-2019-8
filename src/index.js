@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { LoggerService } from '@ciklum/logan';
-// import { ApiService, AxiosHttpAdapter } from '@ciklum/waas'
 
 // import { historySvc } from './services'
 
@@ -11,13 +10,13 @@ window.pkg = JSON.parse(atob(PKG));
 window.name = window.pkg.name;
 window.config = window.config || {
   logLevel: 'info',
-  isNode: false
+  isNode: false,
 };
 
 LoggerService.setGlobalTitle(window.pkg.name);
 
 const logger = new LoggerService();
-logger.setTitle('index');
+logger.setTitle('index.js');
 
 
 // const axiosHttpAdapter = new AxiosHttpAdapter()
@@ -28,7 +27,10 @@ function startApp () {
   // const render = window.config.ssr ? ReactDOM.hydrate : ReactDOM.render
   //
 
-  ReactDOM.render(<Root/>, document.querySelector('#app-root'));
+  ReactDOM.render(
+    <Root />,
+    document.querySelector('#app-root'),
+  );
 }
 
 // if (window.config.startApp) startApp();

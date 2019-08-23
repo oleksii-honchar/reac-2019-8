@@ -1,3 +1,5 @@
+const path = require('path');
+console.log(__dirname)
 module.exports = {
   'extends': [
     'airbnb-base'
@@ -53,7 +55,7 @@ module.exports = {
   },
   'settings': {
     'import/resolver': {
-      'babel-module': {},
+      'babel-module': {}
     },
     'react': {
       'pragma': 'h',
@@ -73,13 +75,13 @@ module.exports = {
     'it': true,
     'expect': true,
   },
-  'parser': '@typescript-eslint/parser',
   'plugins': [
     'babel',
     'react',
     'jest',
     'json',
   ],
+  'parser': 'babel-eslint',
   'parserOptions': {
     'sourceType': 'module',
     'allowImportExportEverywhere': false,
@@ -89,5 +91,10 @@ module.exports = {
       'jsx': true,
       'experimentalObjectRestSpread': true,
     },
+    'babelOptions': {
+      'root': __dirname,
+      'rootMode': 'upward-optional',
+      // 'configFile': path.join(__dirname, './babel.config.js')
+    }
   },
 };

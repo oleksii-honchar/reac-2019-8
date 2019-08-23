@@ -1,18 +1,26 @@
-import '../../assets/stylesheets/min.css';
-import React, { Component } from 'react';
-import { Navbar } from './components/Navbar';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-import styles from './index.css';
+import { SubmitKudosForm } from 'modules/SubmitKudosForm';
+import { AppBar } from './components/AppBar';
 
-export class Root extends Component {
-  render () {
-    const { title } = this.props;
+import { AppCfgContext } from '../../contexts';
 
-    return (
-      <div>
-        <Navbar />
-        <h1 className={styles.title}>{title}</h1>
-      </div>
-    );
-  }
-}
+export const Root = () => {
+  const appCfgCtxInitialState = {
+    name: window.pkg.name,
+  };
+
+  return (
+    <AppCfgContext.Provider value={appCfgCtxInitialState}>
+      <AppBar />
+      <Container>
+        <Row>
+          <Col>
+            <SubmitKudosForm/>
+          </Col>
+        </Row>
+      </Container>
+    </AppCfgContext.Provider>
+  );
+};

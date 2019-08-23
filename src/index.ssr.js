@@ -21,7 +21,7 @@ const { LoggerService } = require('@ciklum/logan');
 
 LoggerService.setGlobalTitle(pkg.name);
 const logger = new LoggerService();
-logger.setTitle('index.ssr');
+logger.setTitle('index.js.ssr');
 
 logger.info('Preparation start');
 logger.info('Import "app" parts for ssr use in "api-gw"..');
