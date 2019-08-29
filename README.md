@@ -285,30 +285,30 @@ Example:
 ```
 /src
   /components
-    index.js
+    index.ts
     Button.jsx
   /modules
     /PageHome
       /components
         /SectionIntro
-          index.js
+          index.ts
           styled-components.js
-        index.js
+        index.ts
       /modules
         /SectionServices
           /components
-            index.js
+            index.ts
             styled-components.js
           constants.js
-          index.js
+          index.ts
           reducer.js
           service.js
       /reducer
         slice1.js
         slice2.js
-        index.js
+        index.ts
       constants.js
-      index.js
+      index.ts
       service.js
 ```
 
@@ -323,12 +323,12 @@ All primitives and wrappers should be a styled components. All styled components
 
 #### Reducer
 If reducer contains small amount of logic we can put all together in `reducer.js` file.<br />
-For more complex situation we will use `reducer` folder with `index.js` file in it
+For more complex situation we will use `reducer` folder with `index.ts` file in it
 
 [(read more)](https://jaysoo.ca/2016/02/28/applying-code-organization-rules-to-concrete-redux-code/#reducers)
 
 ##### Strict Module Boundaries
-Every logical module should have `index.js(x)` which exports all public apis.
+Every logical module should have `index.ts(x)` which exports all public apis.
 
 [(read more)](https://jaysoo.ca/2016/02/28/organizing-redux-application/#rule-2-create-strict-module-boundaries)
 

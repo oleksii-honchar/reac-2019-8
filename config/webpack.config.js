@@ -26,14 +26,17 @@ function getBase64Package () {
 const baseCfg = {
   cache: true,
   devServer: {
-    http2: true,
+    // http2: true,
     port: process.env.SERVE_PORT,
     contentBase: path.join(__dirname, '../dist'),
     publicPath: '/assets/',
     writeToDisk: true
   },
+  entry: {
+    bundle: './src/index.ts',
+  },
   resolve: {
-    extensions: ['.js', '.jsx', '.html', 'ts', 'tsx'],
+    extensions: ['.js', '.jsx', '.html', '.ts', '.tsx'],
     modules: [
       'src',
       'node_modules',
@@ -142,9 +145,6 @@ const baseCfg = {
       /LICENSE/,
       /README.md/,
     ],
-  },
-  entry: {
-    bundle: './src/index.js',
   },
   plugins: [
     new LodashModuleReplacementPlugin(),

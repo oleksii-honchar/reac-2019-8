@@ -16,7 +16,7 @@ window.config = window.config || {
 LoggerService.setGlobalTitle(window.pkg.name);
 
 const logger = new LoggerService();
-logger.setTitle('index.js');
+logger.setTitle('index.ts.ts.ts.ts.js');
 
 // const axiosHttpAdapter = new AxiosHttpAdapter()
 // export const rootApiSvc = new ApiService(axiosHttpAdapter, 'api')

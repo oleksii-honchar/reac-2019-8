@@ -1,7 +1,6 @@
 console.log('[config:babel] config loaded')
 module.exports = {
   'presets': [
-    "@babel/react",
     [
       '@babel/env',
       {
@@ -15,12 +14,14 @@ module.exports = {
           ],
           'node': '12'
         },
-        'useBuiltIns': 'entry',
-        'corejs': '3.0.0',
-        'shippedProposals': true
+        // 'modules': false,
+        // 'corejs': '3.0.0',
+        // 'shippedProposals': true,
+        // 'useBuiltIns': 'entry'
       },
-      '@babel/typescript'
-    ]
+    ],
+    '@babel/react',
+    '@babel/typescript'
   ],
   'plugins': [
     'lodash',
@@ -44,6 +45,7 @@ module.exports = {
         'loose': true
       }
     ],
+    '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import'
   ]
