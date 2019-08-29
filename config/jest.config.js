@@ -1,3 +1,5 @@
+console.log('[config:jest] config loaded')
+
 module.exports = {
   collectCoverage: true,
   coverageReporters: [

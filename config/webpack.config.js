@@ -5,13 +5,16 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
 const $pkg = require('../package.json');
+
+console.log('[config:webpack] config loaded')
 
 function getBase64Package () {
   return JSON.stringify(Buffer.from(JSON.stringify({
@@ -144,6 +147,7 @@ const baseCfg = {
     bundle: './src/index.js',
   },
   plugins: [
+    new LodashModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -156,14 +160,14 @@ const baseCfg = {
     new CopyWebpackPlugin([{
       from: './src/assets', to: '.'
     }]),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin()
   ],
   node: false,
 };
 
-console.log(`Building app [${$pkg.name}] bundle...`);
-console.log(`[${process.env.NODE_ENV}] config used...`);
+console.log(`[config:webpack] Building app [${$pkg.name}] bundle...`);
+console.log(`[config:webpack] "${process.env.NODE_ENV}" config used...`);
 
 let finalCfg;
 if (process.env.NODE_ENV === 'production') {

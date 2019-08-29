@@ -1,3 +1,5 @@
+console.log('[config:post-css] config loaded')
+
 module.exports = ({ file, options, env }) => ({
   parser: file.extname === '.sss' ? 'sugarss' : false,
   plugins: {

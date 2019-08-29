@@ -12,6 +12,8 @@ const WebpackShellPlugin = require('./src/libs/WebpackShellPlugin');
 
 const $pkg = require('./package.json');
 
+console.log('[config:webpack] config for SSR loaded')
+
 function getBase64Package () {
   return JSON.stringify(Buffer.from(JSON.stringify({
     name: $pkg.name,

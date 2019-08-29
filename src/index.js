@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LoggerService } from '@ciklum/logan';
 
+import { LoggerService } from '@ciklum/logan';
 // import { historySvc } from './services'
 
 import { Root } from './modules/Root';
@@ -17,7 +17,6 @@ LoggerService.setGlobalTitle(window.pkg.name);
 
 const logger = new LoggerService();
 logger.setTitle('index.js');
-
 
 // const axiosHttpAdapter = new AxiosHttpAdapter()
 // export const rootApiSvc = new ApiService(axiosHttpAdapter, 'api')

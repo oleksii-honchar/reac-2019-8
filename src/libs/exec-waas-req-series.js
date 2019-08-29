@@ -1,5 +1,5 @@
 import { LoggerService } from '@ciklum/logan';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'lodash';
 
 const logger = new LoggerService();
 logger.setTitle('execWaasReqSeries');

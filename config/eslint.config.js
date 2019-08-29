@@ -1,5 +1,7 @@
 const path = require('path');
+console.log('[config:eslint] config loaded')
 console.log(__dirname)
+
 module.exports = {
   'extends': [
     'airbnb-base'
@@ -55,7 +57,10 @@ module.exports = {
   },
   'settings': {
     'import/resolver': {
-      'babel-module': {}
+      // 'babel-module': {}
+      'node': {
+        'paths': ['src']
+      }
     },
     'react': {
       'pragma': 'h',

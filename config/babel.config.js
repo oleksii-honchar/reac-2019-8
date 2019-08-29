@@ -1,4 +1,4 @@
-console.log(108)
+console.log('[config:babel] config loaded')
 module.exports = {
   'presets': [
     "@babel/react",
@@ -23,6 +23,7 @@ module.exports = {
     ]
   ],
   'plugins': [
+    'lodash',
     [
       'module-resolver',
       {
