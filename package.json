@@ -21,7 +21,7 @@
     "launch:loc": "bash ./scripts/launch.loc.sh",
     "lint": "npx eslint src --ext .js,.jsx,.json --config config/eslint.config.js",
     "lint:fix": "npx eslint src --ext .js,.jsx,.json --fix --config config/eslint.config.js",
-    "start": "watch",
+    "start": "yarn launch:loc",
     "test": "jest --config ./config/jest.config.js",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "watch": "bash scripts/watch.loc.sh",

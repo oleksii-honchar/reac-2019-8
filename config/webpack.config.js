@@ -6,7 +6,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
 // `NODE_ENV` = development | test | production
@@ -160,7 +160,7 @@ const baseCfg = {
     new CopyWebpackPlugin([{
       from: './src/assets', to: '.'
     }]),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin()
   ],
   node: false,
