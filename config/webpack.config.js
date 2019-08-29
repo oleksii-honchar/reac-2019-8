@@ -52,7 +52,7 @@ const baseCfg = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.jsx?$/,
+        test: /\.[tj]sx?$/,
         use: 'source-map-loader',
       },
       {
@@ -175,7 +175,7 @@ if (process.env.NODE_ENV === 'production') {
     optimization: {
       minimizer: [
         new TerserPlugin({
-          test: /\.jsx?$|\.css$|\.html$/,
+          test: /\.[tj]sx?$|\.css$|\.html$/,
           exclude: [
             /\.(spec|e2e)\.js$/,
             /node_modules/,
@@ -188,7 +188,7 @@ if (process.env.NODE_ENV === 'production') {
       new CompressionPlugin({
         filename: '[path].gz[query]',
         algorithm: 'gzip',
-        test: /\.jsx?$|\.css$|\.html$/,
+        test: /\.[tj]sx?$|\.css$|\.html$/,
         threshold: 10240,
         minRatio: 0,
       }),
