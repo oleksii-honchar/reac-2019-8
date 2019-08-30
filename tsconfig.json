@@ -2,13 +2,15 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
+    "declaration": false,
+    "diagnostics": true,
     "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "isolatedModules": false,
     "jsx": "preserve",
     "lib": [
       "dom",
@@ -16,27 +18,32 @@
     ],
     "module": "esnext",
     "moduleResolution": "node",
+    "newLine": "lf",
     "noEmit": true,
     "noImplicitAny": false,
     "noLib": false,
+    "noStrictGenericChecks": true,
+    "pretty": true,
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
     "target": "es6",
-    "typeRoots": ["../node_modules/@types"]
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/typings"
+    ]
   },
-  "include": [
-    "../src/**/*"
-  ],
+  "include": [ "src" ],
   "exclude": [
-    "../node_modules",
-    "../**/*.spec.ts",
-    "../dist",
-    "../docs",
-    "../coverage",
-    "../devops",
-    "../config"
+    "./node_modules",
+    "./src/**/*.spec.ts",
+    "./src/**/*.spec.js",
+    "./src/**/*.test.js",
+    "./dist",
+    "./docs",
+    "./coverage",
+    "./devops"
   ]
 }

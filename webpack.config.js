@@ -12,9 +12,9 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
-const $pkg = require('../package.json');
+const $pkg = require('./package.json');
 
-console.log('[config:webpack] config loaded')
+console.log('[config:webpack] config loaded');
 
 function getBase64Package () {
   return JSON.stringify(Buffer.from(JSON.stringify({
@@ -30,10 +30,10 @@ const baseCfg = {
     port: process.env.SERVE_PORT,
     contentBase: path.join(__dirname, '../dist'),
     publicPath: '/assets/',
-    writeToDisk: true
+    writeToDisk: true,
   },
   entry: {
-    bundle: './src/index.ts',
+    bundle: './src/index.tsx',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.html', '.ts', '.tsx'],
@@ -61,7 +61,7 @@ const baseCfg = {
           loader: 'babel-loader',
           options: {
             configFile: path.join(__dirname, './babel.config.js')
-          }
+          },
         },
         exclude: [
           /\.(spec|e2e)\.js$/,
@@ -130,13 +130,13 @@ const baseCfg = {
               config: {
                 ctx: {
                   'postcss-preset-env': {},
-                  cssnano: {},
-                  nev: process.env.NODE_ENV
+                  'cssnano': {},
+                  'env': process.env.NODE_ENV,
                 },
-                path: './config/postcss.config.js'
-              }
-            }
-          }
+                path: './config/postcss.config.js',
+              },
+            },
+          },
         ],
       },
     ],
@@ -152,13 +152,13 @@ const baseCfg = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
-      PKG: getBase64Package(),
+      'PKG': getBase64Package(),
     }),
     new LoaderOptionsPlugin({
       debug: process.env.NODE_ENV !== 'production',
     }),
     new CopyWebpackPlugin([{
-      from: './src/assets', to: '.'
+      from: './src/assets', to: '.',
     }]),
     // new BundleAnalyzerPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin()

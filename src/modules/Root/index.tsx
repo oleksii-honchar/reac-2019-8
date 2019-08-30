@@ -8,7 +8,7 @@ import { AppCfgContext } from '../../contexts';
 
 export const Root = () => {
   const appCfgCtxInitialState = {
-    name: window.pkg.name,
+    name: window.app.package.name,
   };
 
   return (

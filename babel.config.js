@@ -1,18 +1,19 @@
-console.log('[config:babel] config loaded')
+console.log('[config:babel] config loaded');
+
 module.exports = {
-  'presets': [
+  presets: [
     [
       '@babel/env',
       {
-        'targets': {
-          'browsers': [
+        targets: {
+          browsers: [
             'last 3 versions',
             '> 0.25%',
             'not dead',
             'not ie <= 11',
-            'not op_mini all'
+            'not op_mini all',
           ],
-          'node': '12'
+          node: '12'
         },
         // 'modules': false,
         // 'corejs': '3.0.0',
@@ -21,32 +22,30 @@ module.exports = {
       },
     ],
     '@babel/react',
-    '@babel/typescript'
+    '@babel/typescript',
   ],
-  'plugins': [
+  plugins: [
     'lodash',
     [
       'module-resolver',
       {
-        'root': [
-          './src'
-        ]
-      }
+        root: ['./src'],
+      },
     ],
     [
       '@babel/plugin-proposal-decorators',
       {
-        'legacy': true
-      }
+        legacy: true,
+      },
     ],
     [
       '@babel/plugin-proposal-class-properties',
       {
-        'loose': true
-      }
+        loose: true,
+      },
     ],
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-syntax-dynamic-import'
-  ]
-}
+    '@babel/plugin-syntax-dynamic-import',
+  ],
+};

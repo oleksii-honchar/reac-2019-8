@@ -5,8 +5,8 @@ env-cmd -f $envFile "$PWD/devops/local/scripts/check-env-vars.sh"
 source $envFile
 
 if [ $SSR = true ]; then
-    env-cmd -f $envFile webpack --config ./config/webpack.config.js --watch --mode development --progress &\
-    env-cmd -f $envFile webpack --config ./config/webpack.config.ssr.js --watch --mode development --progress
+    env-cmd -f $envFile webpack --config webpack.config.js --watch --mode development --progress &\
+    env-cmd -f $envFile webpack --config webpack.config.ssr.js --watch --mode development --progress
 else
-    env-cmd -f $envFile webpack-dev-server --config ./config/webpack.config.js --mode development --open
+    env-cmd -f $envFile webpack-dev-server --config webpack.config.js --mode development --open
 fi
