@@ -35,9 +35,6 @@
   "author": "IAmAMaze",
   "license": "MIT",
   "dependencies": {
-    "@ciklum/logan": "0.4.10",
-    "@ciklum/waas": "1.9.2",
-    "@ciklum/xmess": "1.0.4",
     "bootstrap": "4.3.1",
     "classnames": "2.2.6",
     "core-js": "3",
