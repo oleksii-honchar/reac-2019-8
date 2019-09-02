@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/user/.nvm/versions/node/v12.9.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add babel-plugin-module-resolver--вум
+  /Users/user/.nvm/versions/node/v12.9.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add eslint-plugin-import--вум
 
 PATH: 
   /Users/user/.nvm/versions/node/v12.9.0/bin:/Users/user/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -103,7 +103,7 @@ npm manifest:
       "babel-jest": "24.9.0",
       "babel-loader": "8",
       "babel-plugin-lodash": "^3.3.4",
-      "babel-plugin-module-resolver": "3",
+      "babel-plugin-module-resolver": "^3.2.0",
       "compression-webpack-plugin": "3.0.0",
       "copy-webpack-plugin": "5.0.4",
       "cross-env": "5.2.0",
@@ -1926,7 +1926,7 @@ Lockfile:
       lodash "^4.17.10"
       require-package-name "^2.0.1"
   
-  babel-plugin-module-resolver@3:
+  babel-plugin-module-resolver@^3.2.0:
     version "3.2.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-module-resolver/-/babel-plugin-module-resolver-3.2.0.tgz#ddfa5e301e3b9aa12d852a9979f18b37881ff5a7"
     integrity sha512-tjR0GvSndzPew/Iayf4uICWZqjBwnlMWjSx6brryfQ81F9rxBVqwDJtFCV8oOs0+vJeefK9TmdZtkIFdFe1UnA==

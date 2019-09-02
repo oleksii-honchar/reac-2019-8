@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { Root } from '../../modules/Root';
+import { Root } from 'modules/Root';
 
 let container;
 

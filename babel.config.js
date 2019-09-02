@@ -13,7 +13,7 @@ module.exports = {
             'not ie <= 11',
             'not op_mini all',
           ],
-          node: '12'
+          node: '12',
         },
         // 'modules': false,
         // 'corejs': '3.0.0',

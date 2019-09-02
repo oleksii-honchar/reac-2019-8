@@ -86,6 +86,7 @@
     "eslint": "6.2.1",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "6.1.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "22.15.2",

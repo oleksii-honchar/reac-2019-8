@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { SubmitKudosForm } from 'modules/SubmitKudosForm';
 import { AppBar } from './components/AppBar';
 
-import { AppCfgContext } from '../../contexts';
+import { AppCfgContext } from 'contexts';
 
 export const Root = () => {
   const appCfgCtxInitialState = {

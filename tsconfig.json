@@ -1,46 +1,48 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": false,
-    "diagnostics": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "allowJs": false, // Allow JavaScript files to be compiled.
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export. This does not affect code emit, just typechecking.
+    "declaration": true, // Generates corresponding '.d.ts' file
+    "diagnostics": true, // Show diagnostic information
+    "emitDecoratorMetadata": true, // Enables experimental support for emitting type metadata for decorators.
+    "esModuleInterop": true, // for babel compatibility
+    "experimentalDecorators": true, // Enables experimental support for ES7 decorators
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "importHelpers": true,
-    "isolatedModules": false,
-    "jsx": "preserve",
+    "resolveJsonModule": true, // Include modules imported with .json extension.
+    "importHelpers": true, // Import emit helpers from 'tslib'
+    "isolatedModules": false, // Transpile each file as a separate module (similar to 'ts.transpileModule')
+    "jsx": "preserve", // Specify JSX code generation: 'preserve', 'react-native', or 'react'
     "lib": [
       "dom",
-      "es2018"
+      "esnext" // This allows you to use the latest JavaScript language features
     ],
     "module": "esnext",
     "moduleResolution": "node",
     "newLine": "lf",
-    "noEmit": true,
-    "noImplicitAny": false,
-    "noLib": false,
-    "noStrictGenericChecks": true,
+    "noEmit": true, // Do not emit outputs
+    "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type
+    "noLib": false, // Do not include the default library file (lib.d.ts).
+    "noStrictGenericChecks": true, // Disable strict checking of generic signatures in function types.
     "pretty": true,
-    "removeComments": true,
-    "skipLibCheck": true,
+    "removeComments": true, // Do not emit comments to output
+    "skipLibCheck": false, // Skip type checking of all declaration files (*.d.ts).
     "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
+    "strict": true, // Enable all strict type-checking options
+    "strictNullChecks": true, // Enable strict null checks
     "target": "es6",
     "typeRoots": [
       "./node_modules/@types",
       "./src/typings"
     ]
   },
-  "include": [ "src" ],
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "./node_modules",
-    "./src/**/*.spec.ts",
-    "./src/**/*.spec.js",
-    "./src/**/*.test.js",
+    "**/*.spec.ts",
+    "**/*.spec.js",
+    "**/*.test.js",
     "./dist",
     "./docs",
     "./coverage",
