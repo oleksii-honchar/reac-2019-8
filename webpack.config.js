@@ -12,16 +12,9 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
-const $pkg = require('./package.json');
+const pkg = require('./package.json');
 
 console.log('[config:webpack] config loaded');
-
-function getBase64Package () {
-  return JSON.stringify(Buffer.from(JSON.stringify({
-    name: $pkg.name,
-    version: $pkg.version,
-  })).toString('base64'));
-}
 
 const baseCfg = {
   cache: true,
@@ -152,7 +145,8 @@ const baseCfg = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
-      'PKG': getBase64Package(),
+      'PKG_NAME': JSON.stringify(pkg.name),
+      'PKG_VERSION': JSON.stringify(pkg.version),
     }),
     new LoaderOptionsPlugin({
       debug: process.env.NODE_ENV !== 'production',
@@ -166,7 +160,7 @@ const baseCfg = {
   node: false,
 };
 
-console.log(`[config:webpack] Building app [${$pkg.name}] bundle...`);
+console.log(`[config:webpack] Building app [${pkg.name}] bundle...`);
 console.log(`[config:webpack] "${process.env.NODE_ENV}" config used...`);
 
 let finalCfg;

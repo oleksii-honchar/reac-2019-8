@@ -4,15 +4,12 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { SubmitKudosForm } from 'modules/SubmitKudosForm';
 import { AppBar } from './components/AppBar';
 
-import { AppCfgContext } from 'contexts';
+import { AppConfigProvider } from 'contexts';
 
 export const Root = () => {
-  const appCfgCtxInitialState = {
-    name: window.app.package.name,
-  };
 
   return (
-    <AppCfgContext.Provider value={appCfgCtxInitialState}>
+    <AppConfigProvider value={window.app}>
       <AppBar />
       <Container>
         <Row>
@@ -21,6 +18,6 @@ export const Root = () => {
           </Col>
         </Row>
       </Container>
-    </AppCfgContext.Provider>
+    </AppConfigProvider>
   );
 };

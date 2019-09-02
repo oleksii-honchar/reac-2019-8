@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { AppCfgContext } from 'contexts/AppCfgContext';
+import { useAppConfig } from 'contexts';
 
 export function AppBar () {
-  const appCfgCtx = useContext(AppCfgContext);
+  const appConfig = useAppConfig();
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">{appCfgCtx.name}</Navbar.Brand>
+      <Navbar.Brand href="#home">{appConfig.name}</Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="#home">Home</Nav.Link>

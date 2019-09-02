@@ -4,18 +4,18 @@ import ReactDOM from 'react-dom';
 import { LoggerService } from '@ciklum/logan';
 // import { historySvc } from './services'
 
-import { Root } from './modules/Root';
+import { Root } from 'modules/Root';
+import { AppConfig } from 'typings';
 
-const pkg = JSON.parse(atob(PKG));
-window.app = {
-  name: pkg.name,
-  package: pkg,
+window.app= {
+  name: PKG_NAME,
+  version: PKG_VERSION,
   config: {
     logLevel: 'info',
     isNode: false,
     startApp: true,
   },
-};
+} as AppConfig;
 
 LoggerService.setGlobalTitle(window.app.name);
 

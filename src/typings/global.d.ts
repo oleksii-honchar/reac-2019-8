@@ -1,14 +1,11 @@
-export interface App {
-  name: string;
-  package: any;
-  config: any;
-}
+import { AppConfig } from './AppConfig'
 
 declare global {
-  const PKG: string;
+  const PKG_NAME: string;
+  const PKG_VERSION: string;
 
   interface Window {
-    app: App;
+    app: AppConfig;
     PKG: string;
   }
 }

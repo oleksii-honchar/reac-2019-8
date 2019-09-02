@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": false, // Allow JavaScript files to be compiled.
     "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export. This does not affect code emit, just typechecking.
+    "baseUrl": "./src",
     "declaration": true, // Generates corresponding '.d.ts' file
     "diagnostics": true, // Show diagnostic information
     "emitDecoratorMetadata": true, // Enables experimental support for emitting type metadata for decorators.
@@ -23,6 +24,13 @@
     "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type
     "noLib": false, // Do not include the default library file (lib.d.ts).
     "noStrictGenericChecks": true, // Disable strict checking of generic signatures in function types.
+    "paths": {
+      "libs": [ "./libs/*", "./libs" ],
+      "modules": [ "./modules/*", "./modules" ],
+      "services": [ "./services/*", "./services" ],
+      "contexts": [ "./contexts/*", "./contexts" ],
+      "assets": [ "./assets/*" ]
+    },
     "pretty": true,
     "removeComments": true, // Do not emit comments to output
     "skipLibCheck": false, // Skip type checking of all declaration files (*.d.ts).
