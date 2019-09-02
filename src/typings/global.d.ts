@@ -1,5 +1,3 @@
-declare const PKG: string;
-
 export interface App {
   name: string;
   package: any;
@@ -7,6 +5,8 @@ export interface App {
 }
 
 declare global {
+  const PKG: string;
+
   interface Window {
     app: App;
     PKG: string;

@@ -1,9 +1,5 @@
-/// <reference path="./typings/global.d.ts" />
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { PKG } from './typings/global';
 
 import { LoggerService } from '@ciklum/logan';
 // import { historySvc } from './services'

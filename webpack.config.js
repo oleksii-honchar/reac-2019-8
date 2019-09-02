@@ -52,11 +52,11 @@ const baseCfg = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.[tj]sx?$|\.d\.ts$/,
+        test: /\.[tj]sx?$/,
         use: 'source-map-loader',
       },
       {
-        test: /\.[tj]sx?$|\.d\.ts$/,
+        test: /\.[tj]sx?$/,
         use: {
           loader: 'babel-loader',
           options: {
