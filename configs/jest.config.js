@@ -1,6 +1,9 @@
 console.log('[config:jest] config loaded')
 
 module.exports = {
+  roots: [
+    "<rootDir>/src"
+  ],
   collectCoverage: true,
   coverageReporters: [
     'json',

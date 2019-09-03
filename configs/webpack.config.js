@@ -6,17 +6,17 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 
 console.log('[config:webpack] config loaded');
 
-const baseCfg = {
+const baseCfg = (env) => ({
   cache: true,
   devServer: {
     // http2: true,
@@ -154,18 +154,37 @@ const baseCfg = {
     new CopyWebpackPlugin([{
       from: './src/assets', to: '.',
     }]),
-    // new BundleAnalyzerPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin()
   ],
   node: false,
-};
+});
 
-console.log(`[config:webpack] Building app [${pkg.name}] bundle...`);
-console.log(`[config:webpack] "${process.env.NODE_ENV}" config used...`);
+module.exports = (env) => {
+  env = env ? env : {};
+  env.BUILD_ANALYZE = env.BUILD_ANALYZE ? env.BUILD_ANALYZE : null;
 
-let finalCfg;
-if (process.env.NODE_ENV === 'production') {
-  finalCfg = webpackMerge(baseCfg, {
+  console.log(`[config:webpack] Building app [${pkg.name}] bundle...`);
+  console.log(`[config:webpack] "${process.env.NODE_ENV}" config used...`);
+
+  let cfg = baseCfg(env);
+
+  if (env.BUILD_ANALYZE === 'true') {
+    console.log('[config:webpack] bundle analyzer included')
+
+    cfg = webpackMerge(cfg, {
+      plugins: [ new BundleAnalyzerPlugin() ]
+    });
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    cfg = webpackMerge(cfg, {
+      devtool: 'inline-source-map',
+    });
+
+    return cfg;
+  }
+
+  cfg = webpackMerge(cfg, {
     optimization: {
       minimizer: [
         new TerserPlugin({
@@ -188,10 +207,6 @@ if (process.env.NODE_ENV === 'production') {
       }),
     ],
   });
-} else {
-  finalCfg = webpackMerge(baseCfg, {
-    devtool: 'inline-source-map',
-  });
-}
 
-module.exports = finalCfg;
+  return cfg;
+}

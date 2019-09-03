@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-envFile="$PWD/devops/local/config/development.env"
+envFile="$PWD/devops/local/config/production.local.env"
 env-cmd -f $envFile "$PWD/devops/local/scripts/check-env-vars.sh"
 
 source $envFile
 
 env-cmd -f $envFile \
-    webpack-dev-server \
+    webpack \
         --config ./configs/webpack.config.js \
-        --mode development \
-        --env.BUILD_ANALYZE=false \
-        --open
+        --mode production \
+        --env.BUILD_ANALYZE=$BUILD_ANALYZE

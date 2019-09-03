@@ -2,9 +2,9 @@
   "compilerOptions": {
     "allowJs": false, // Allow JavaScript files to be compiled.
     "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export. This does not affect code emit, just typechecking.
-    "baseUrl": "./src",
+    "baseUrl": "../src",
     "declaration": true, // Generates corresponding '.d.ts' file
-    "diagnostics": true, // Show diagnostic information
+    "diagnostics": false, // Show diagnostic information
     "emitDecoratorMetadata": true, // Enables experimental support for emitting type metadata for decorators.
     "esModuleInterop": true, // for babel compatibility
     "experimentalDecorators": true, // Enables experimental support for ES7 decorators
@@ -44,16 +44,17 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "../src/**/*"
   ],
   "exclude": [
-    "./node_modules",
-    "**/*.spec.ts",
-    "**/*.spec.js",
-    "**/*.test.js",
-    "./dist",
-    "./docs",
-    "./coverage",
-    "./devops"
+    "../node_modules",
+    "../src/**/*.spec.ts",
+    "../src/**/*.spec.tsx",
+    "../src/**/*.spec.js",
+    "../src/**/*.test.js",
+    "../dist",
+    "../docs",
+    "../coverage",
+    "../devops"
   ]
 }
