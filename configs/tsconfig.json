@@ -29,6 +29,7 @@
       "modules": [ "./modules/*", "./modules" ],
       "services": [ "./services/*", "./services" ],
       "contexts": [ "./contexts/*", "./contexts" ],
+      "reducers": [ "./reducers/*", "./reducers" ],
       "assets": [ "./assets/*" ]
     },
     "pretty": true,
