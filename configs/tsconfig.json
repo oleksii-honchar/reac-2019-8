@@ -37,7 +37,7 @@
     "sourceMap": true,
     "strict": true, // Enable all strict type-checking options
     "strictNullChecks": true, // Enable strict null checks
-    "target": "es6",
+    "target": "es2018",
     "typeRoots": [
       "./node_modules/@types",
       "./src/typings"

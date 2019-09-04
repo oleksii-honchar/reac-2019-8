@@ -17,7 +17,7 @@ const prodCfg = require('./webpack/prod.config')
 
 console.log(`[config:webpack] "${pkg.name}"config composition started`);
 
-function processTemplates (env) {
+function generateIndexHtml (env) {
   const data = {
     NODE_ENV: process.env.NODE_ENV
   };
@@ -43,7 +43,7 @@ module.exports = (env) => {
 
   console.log(`[config:webpack] "${process.env.NODE_ENV}" mode used...`);
 
-  processTemplates(env);
+  generateIndexHtml(env);
 
   let cfg = baseCfg(env);
 
