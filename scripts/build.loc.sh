@@ -9,4 +9,3 @@ env-cmd -f $envFile \
         --config ./configs/webpack.config.js \
         --mode development \
         --env.BUILD_ANALYZE=$BUILD_ANALYZE
-        --progress

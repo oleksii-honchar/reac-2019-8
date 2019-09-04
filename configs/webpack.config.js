@@ -1,11 +1,7 @@
+const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
+const hbs = require('handlebars');
 const webpackMerge = require('webpack-merge');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
@@ -14,159 +10,45 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const pkg = require('../package.json');
 
-console.log('[config:webpack] config loaded');
+const reactCfg = require('./webpack/react.config');
+const moduleCfg = require('./webpack/module.config');
+const baseCfg = require('./webpack/base.config')
+const prodCfg = require('./webpack/prod.config')
 
-const baseCfg = (env) => ({
-  cache: true,
-  devServer: {
-    // http2: true,
-    port: process.env.SERVE_PORT,
-    contentBase: path.join(__dirname, '../dist'),
-    publicPath: '/assets/',
-    writeToDisk: true,
-  },
-  entry: {
-    bundle: './src/index.tsx',
-  },
-  resolve: {
-    extensions: ['.js', '.jsx', '.html', '.ts', '.tsx'],
-    modules: [
-      'src',
-      'node_modules',
-    ],
-  },
-  output: {
-    path: path.join(__dirname, '../dist'),
-    filename: '[name].js',
-    sourceMapFilename: '[name].map',
-    publicPath: './assets/',
-  },
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.[tj]sx?$/,
-        use: 'source-map-loader',
-      },
-      {
-        test: /\.[tj]sx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            configFile: path.join(__dirname, './babel.config.js')
-          },
-        },
-        exclude: [
-          /\.(spec|e2e)\.[tj]sx?$/,
-          /node_modules/,
-        ],
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
-          },
-        },
-      },
-      {
-        test: /\.(jpe?g|png|svg|gif|cur)$/,
-        exclude: /icons/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'images/',
-          },
-        },
-      },
-      {
-        test: /\.svg/,
-        include: /icons/,
-        use: [{
-          loader: 'svg-inline-loader',
-          options: {
-            removeSVGTagAttrs: false,
-          },
-        }],
-      },
-      {
-        test: /\.css$/,
-        include: /src\/assets/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        exclude: /src\/assets/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                ctx: {
-                  'postcss-preset-env': {},
-                  'cssnano': {},
-                  'env': process.env.NODE_ENV,
-                },
-                path: './config/postcss.config.js',
-              },
-            },
-          },
-        ],
-      },
-    ],
-    noParse: [
-      /\.(spec|e2e)\.jsx?$/,
-      /LICENSE/,
-      /README.md/,
-    ],
-  },
-  plugins: [
-    new LodashModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-      'PKG_NAME': JSON.stringify(pkg.name),
-      'PKG_VERSION': JSON.stringify(pkg.version),
-    }),
-    new LoaderOptionsPlugin({
-      debug: process.env.NODE_ENV !== 'production',
-    }),
-    new CopyWebpackPlugin([{
-      from: './src/assets', to: '.',
-    }]),
-    // new webpack.optimize.ModuleConcatenationPlugin()
-  ],
-  node: false,
-});
+console.log(`[config:webpack] "${pkg.name}"config composition started`);
+
+function processTemplates (env) {
+  const data = {
+    NODE_ENV: process.env.NODE_ENV
+  };
+
+  const tmplPath = path.join(__dirname, '../src/assets/index.hbs');
+  const source = fs.readFileSync(tmplPath, 'utf-8');
+
+  const tmpl = hbs.compile(source);
+  const html = tmpl(data);
+
+  const destPath = path.join(__dirname, '../dist/');
+  try {
+    fs.mkdirSync(destPath, { recursive:true });
+  } catch (e) {
+    console.error(e);
+  }
+  fs.writeFileSync(destPath + 'index.html', html, 'utf8');
+}
 
 module.exports = (env) => {
   env = env ? env : {};
   env.BUILD_ANALYZE = env.BUILD_ANALYZE ? env.BUILD_ANALYZE : null;
 
-  console.log(`[config:webpack] Building app [${pkg.name}] bundle...`);
-  console.log(`[config:webpack] "${process.env.NODE_ENV}" config used...`);
+  console.log(`[config:webpack] "${process.env.NODE_ENV}" mode used...`);
+
+  processTemplates(env);
 
   let cfg = baseCfg(env);
+
+  cfg = webpackMerge(cfg, moduleCfg);
+  cfg = webpackMerge(cfg, reactCfg);
 
   if (env.BUILD_ANALYZE === 'true') {
     console.log('[config:webpack] bundle analyzer included')
@@ -181,32 +63,13 @@ module.exports = (env) => {
       devtool: 'inline-source-map',
     });
 
+    console.log('[config:webpack] config composition completed');
+
     return cfg;
   }
 
-  cfg = webpackMerge(cfg, {
-    optimization: {
-      minimizer: [
-        new TerserPlugin({
-          test: /\.[tj]sx?$|\.css$|\.html$/,
-          exclude: [
-            /\.(spec|e2e)\.js$/,
-            /node_modules/,
-          ],
-          parallel: true,
-        }),
-      ],
-    },
-    plugins: [
-      new CompressionPlugin({
-        filename: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.[tj]sx?$|\.css$|\.html$/,
-        threshold: 10240,
-        minRatio: 0,
-      }),
-    ],
-  });
+  cfg = webpackMerge(cfg, prodCfg);
 
+  console.log('[config:webpack] config composition completed');
   return cfg;
 }

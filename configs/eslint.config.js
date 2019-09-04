@@ -82,6 +82,7 @@ module.exports = {
     'react',
     'jest',
     'json',
+    'node'
   ],
   parser: 'babel-eslint',
   parserOptions: {
