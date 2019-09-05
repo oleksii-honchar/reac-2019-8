@@ -26,7 +26,7 @@
     "noStrictGenericChecks": true, // Disable strict checking of generic signatures in function types.
     "paths": {
       "libs": [ "./libs/*", "./libs" ],
-      "modules": [ "./modules/*", "./modules" ],
+      "pages": [ "./pages/*", "./pages" ],
       "services": [ "./services/*", "./services" ],
       "contexts": [ "./contexts/*", "./contexts" ],
       "reducers": [ "./reducers/*", "./reducers" ],

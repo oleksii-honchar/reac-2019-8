@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { SubmitKudosForm } from 'modules/SubmitKudosForm';
+import { SubmitKudosForm } from 'pages/SubmitKudosForm';
 import { AppBar } from './components/AppBar';
 
 import { AppConfigProvider } from 'contexts';

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { LoggerService } from '@ciklum/logan';
 // import { historySvc } from './services'
 
-import { Root } from 'modules/Root';
+import { Root } from 'pages/Root';
 import { AppConfig } from 'typings';
 
 window.app= {
