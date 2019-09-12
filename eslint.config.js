@@ -1,1 +1,1 @@
-import './configs/eslint.config';
+require('./configs/eslint.config');
