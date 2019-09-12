@@ -15,7 +15,7 @@
     "docker:up:loc": "bash ./devops/scripts/run.loc.sh",
     "launch:loc": "run-p launch:dev-server types:watch",
     "launch:dev-server": "bash ./scripts/launch.dev-server.sh",
-    "lint": "npx eslint src --config ./configs/eslint.config.js",
+    "lint": "npx eslint src --config ./configs/eslint.config.js --ext .ts,.tsx,.json",
     "lint:fix": "yarn lint -- --fix",
     "start": "yarn launch:loc",
     "test": "jest --config ./configs/jest.config.js",
