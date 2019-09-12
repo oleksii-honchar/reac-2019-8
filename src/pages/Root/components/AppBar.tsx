@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { useAppConfig } from 'contexts';
+import { useAppConfig } from 'src/contexts';
 
 export function AppBar () {
   const appConfig = useAppConfig();

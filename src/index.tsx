@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { LoggerService } from '@ciklum/logan';
 // import { historySvc } from './services'
 
-import { Root } from 'pages/Root';
-import { AppConfig } from 'typings';
+import { Root } from 'src/pages/Root';
+import { AppConfig } from 'src/typings';
 
 window.app= {
   name: PKG_NAME,

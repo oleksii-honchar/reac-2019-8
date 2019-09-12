@@ -1,5 +1,5 @@
 import { useContext, createContext } from 'react';
-import { AppConfig } from 'typings';
+import { AppConfig } from 'src/typings';
 
 const appConfigDefaults = {
   name: '',
