@@ -34,15 +34,15 @@
     "strict": true, // Enable all strict type-checking options
     "strictNullChecks": true, // Enable strict null checks
     "target": "es2018",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/typings"
+    "typeRoots": [ // relative to package.json path
+      "node_modules/@types",
+      "src/typings"
     ]
   },
-  "include": [
+  "include": [ // relative to ./configs/tsconfig.json
     "../src/**/*"
   ],
-  "exclude": [
+  "exclude": [ // relative to ./configs/tsconfig.json
     "../node_modules",
     "../src/**/*.spec.ts",
     "../src/**/*.spec.tsx",
